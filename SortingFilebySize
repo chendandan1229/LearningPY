@@ -1,0 +1,15 @@
+import os
+def file_name(file_dir):
+    L = []
+    for root, dirs, files in os.walk(file_dir):
+        for file in files:
+            L.append((os.path.join(root, file),os.path.getsize(os.path.join(root, file))))
+    return sorted(L, key=lambda x:x[1])
+    
+    
+def write_result(Array):
+    a = [Array[i][0] for i in range(0, len(Array))]
+    str = '\n'.join(a)
+    f=open('D:\Continuum\Coding\SortResult.txt',"w+")
+    f.writelines(str)
+    f.close()
